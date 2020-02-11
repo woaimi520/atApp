@@ -90,14 +90,6 @@ public class AtUtils {
             s.append(group);
         }
         String str= "@" + s;
-//        final String phone = usrStr.split(":")[1];
-//        String str;
-//        User user = findUser(phone);
-//        if(user == null){
-//            str = "@" + phone;
-//        }else {
-//            str = "@" + user.name;
-//        }
         SpannableString spanText = new SpannableString(usrStr);
         TextView spanTv = (TextView) LayoutInflater.from(textView.getContext()).inflate(R.layout.item_at, (ViewGroup) textView.getParent(), false);
         spanTv.setText(str);
