@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView tips1,tips2;
     private EditText editText;
-    private String testStr = "@测试@user:13666660002123功能";
+    private String testStr = "@测试@user:13666660002123 <fontuser>任宇</fontuser>功能";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void appendAt(User user){
         editText.getText().delete(editText.getText().length()-1,editText.getText().length());
-        editText.append(AtUtils.getSpan(editText,"@user:"+user.phone));//通过这个显示的是名字
+        editText.append(AtUtils.getSpan(editText,"<fontuser>"+user.name+"</fontuser>"));//通过这个显示的是名字
         editText.append(",");
     }
 }
