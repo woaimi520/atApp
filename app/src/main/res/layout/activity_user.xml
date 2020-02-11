@@ -11,9 +11,9 @@
     android:orientation="vertical"
     tools:context=".UserActivity">
 
-    <ListView android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

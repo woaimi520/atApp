@@ -7,7 +7,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
+import java.util.List;
 
 
 public class UserActivity extends AppCompatActivity {
@@ -17,16 +28,52 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(new ArrayAdapter<User>(this,android.R.layout.simple_list_item_1,AtUtils.usrList));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        RecyclerView listView = (RecyclerView) findViewById(R.id.listView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        listView.setLayoutManager(layoutManager);
+
+        Myadapter myadapter = new Myadapter(android.R.layout.simple_list_item_1, AtUtils.usrList);
+        myadapter.setOnItemClickListener( (adapter,view,postsition)->{
+
                 Intent intent = new Intent();
-                intent.putExtra("user",AtUtils.usrList.get(position));
+                intent.putExtra("user",AtUtils.usrList.get(postsition));
                 setResult(RESULT_OK,intent);
                 finish();
-            }
-        });
+                }
+        );
+        listView.setAdapter(myadapter);
+
+    }
+
+    class Myadapter extends BaseQuickAdapter{
+
+        public Myadapter(int layoutResId, @Nullable List data) {
+            super(layoutResId, data);
+        }
+
+        public Myadapter(@Nullable List data) {
+            super(data);
+        }
+
+        public Myadapter(int layoutResId) {
+            super(layoutResId);
+        }
+
+        /**
+         * 初始化显示用
+         * @param helper
+         * @param item
+         */
+        @Override
+        protected void convert(BaseViewHolder helper, Object item) {
+            User user = (User) item;
+
+           ((TextView) helper.getView(android.R.id.text1)).setText(user.name);
+
+        }
+
     }
 }
+

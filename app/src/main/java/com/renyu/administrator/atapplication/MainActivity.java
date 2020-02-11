@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tips2.setMovementMethod(LinkMovementMethod.getInstance());
         editText.setMovementMethod(LinkMovementMethod.getInstance());//不加这个 @的东西 点击没得特殊效果
 
-        AtUtils.setText(editText,testStr);
+        AtUtils.setText(editText,testStr);// 默认显示 可以用这个
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
