@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editText = (EditText) findViewById(R.id.editText);
 
         tips2.setMovementMethod(LinkMovementMethod.getInstance());
-        editText.setMovementMethod(LinkMovementMethod.getInstance());
+        editText.setMovementMethod(LinkMovementMethod.getInstance());//不加这个 @的东西 点击没得特殊效果
 
         AtUtils.setText(editText,testStr);
         editText.addTextChangedListener(new TextWatcher() {
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         String str = editText.getText().toString();
-        tips1.setText(str);
-        AtUtils.setText(tips2,str);
+        tips1.setText(str);// 通过这个显示的是@user 。。。 的格式
+        AtUtils.setText(tips2,str);// 通过这个显示的是名字
         Toast.makeText(this, tips2.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void appendAt(User user){
         editText.getText().delete(editText.getText().length()-1,editText.getText().length());
-        editText.append(AtUtils.getSpan(editText,"@user:"+user.phone));
+        editText.append(AtUtils.getSpan(editText,"@user:"+user.phone));//通过这个显示的是名字
         editText.append(",");
     }
 }
