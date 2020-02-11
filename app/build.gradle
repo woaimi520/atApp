@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 
@@ -8,7 +8,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
-        applicationId "com.renyu.administrator.atapplication"
+        //applicationId "com.renyu.administrator.atapplication"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
