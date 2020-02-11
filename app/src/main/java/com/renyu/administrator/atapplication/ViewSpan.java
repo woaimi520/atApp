@@ -8,11 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-/**
- * 作者：任宇
- * 日期：2020/2/11 14:38
- * 注释：
- */
 public class ViewSpan extends ReplacementSpan {
     protected View view;
     private int maxWidth;
@@ -32,14 +27,13 @@ public class ViewSpan extends ReplacementSpan {
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
     }
     @Override
-    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
+    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom,@NonNull Paint paint) {
         prepView();
 
         canvas.save();
         //Centering the token looks like a better strategy that aligning the bottom
         int padding = (bottom - top - view.getBottom()) / 2;
         canvas.translate(x, bottom - view.getBottom() - padding);
-        //这一句是重点，将view画在指定canvas上
         view.draw(canvas);
         canvas.restore();
     }
