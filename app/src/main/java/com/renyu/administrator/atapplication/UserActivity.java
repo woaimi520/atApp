@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,8 +34,11 @@ public class UserActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(layoutManager);
+        Intent intentActivity = getIntent();
+        Bundle bundle = intentActivity.getExtras();
+        ArrayList<String> list = (ArrayList<String> )bundle.getSerializable("datalist");
 
-        Myadapter myadapter = new Myadapter(android.R.layout.simple_list_item_1, AtUtils.usrList);
+        Myadapter myadapter = new Myadapter(android.R.layout.simple_list_item_1, list);
         myadapter.setOnItemClickListener( (adapter,view,postsition)->{
 
                 Intent intent = new Intent();
@@ -68,9 +72,9 @@ public class UserActivity extends AppCompatActivity {
          */
         @Override
         protected void convert(BaseViewHolder helper, Object item) {
-            User user = (User) item;
+            String user = (String) item;
 
-           ((TextView) helper.getView(android.R.id.text1)).setText(user.name);
+           ((TextView) helper.getView(android.R.id.text1)).setText(user);
 
         }
 
