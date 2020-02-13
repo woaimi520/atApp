@@ -42,7 +42,7 @@ public class UserActivity extends AppCompatActivity {
         myadapter.setOnItemClickListener( (adapter,view,postsition)->{
 
                 Intent intent = new Intent();
-                intent.putExtra("user",AtUtils.usrList.get(postsition));
+                intent.putExtra("user",list.get(postsition));
                 setResult(RESULT_OK,intent);
                 finish();
                 }
