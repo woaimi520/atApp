@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,9 +31,8 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
         RecyclerView listView = (RecyclerView) findViewById(R.id.listView);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager layoutManager = new GridLayoutManager(this, 5);
+        listView.addItemDecoration(new GridItemDecorationForAllData2Flag(5, 50));
         listView.setLayoutManager(layoutManager);
         Intent intentActivity = getIntent();
         Bundle bundle = intentActivity.getExtras();
